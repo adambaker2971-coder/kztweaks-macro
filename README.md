@@ -1,28 +1,57 @@
-# Railway Backend Server
+# 🚀 GitHub Upload Folder
 
-This folder contains the backend server files for Railway deployment.
+This folder contains **ALL files needed for Railway deployment**.
 
-## 📁 Files
+## 📁 What's Here
 
-- `server.js` - Express backend server
+### `files/` folder - Railway Server
+- `server.js` - Main backend server
+- `file-server.js` - File serving endpoints
 - `package.json` - Server dependencies
 - `railway.toml` - Railway configuration
 
-## 🚀 Deploy to Railway
+### Root Files - App Files Railway Serves
+All JavaScript files, HTML, CSS, and config files that Railway will serve to your Electron app.
 
-1. Push this `railway` folder to GitHub (or push entire project)
-2. In Railway, connect your repository
-3. Set **Root Directory** to `railway` (in Railway service settings)
-4. Railway will auto-detect and deploy
+## 🚀 How to Upload
 
-## 📝 Environment Variables
+1. **Initialize Git** (if not done):
+   ```bash
+   cd github-upload
+   git init
+   ```
 
-Set these in Railway dashboard:
+2. **Add all files**:
+   ```bash
+   git add .
+   ```
 
-- `ENCRYPTION_KEY` - Random 32-byte hex string
-- `API_SECRET` - Random 32-byte hex string  
-- `NODE_ENV` - Set to `production`
+3. **Commit**:
+   ```bash
+   git commit -m "Add Railway backend and app files"
+   ```
 
-## 📚 Documentation
+4. **Push to GitHub**:
+   ```bash
+   git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
+   git push -u origin main
+   ```
 
-See the `.md` files in this folder for detailed setup instructions.
+## ✅ After Upload
+
+Railway will:
+- ✅ Detect `files/server.js`
+- ✅ Use `files/railway.toml` for config
+- ✅ Install dependencies from `files/package.json`
+- ✅ Serve all app files via file server
+
+## 📝 Next Steps
+
+1. Push this folder to GitHub
+2. Connect to Railway
+3. Set environment variables in Railway
+4. Deploy!
+
+---
+
+**All files ready for Railway deployment!** 🎉

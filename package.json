@@ -1,0 +1,195 @@
+{
+  "name": "vantrix",
+  "version": "10.6.12",
+  "description": "vantrix - Game with no Limits!",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron . --no-sandbox",
+    "server": "node server.js",
+    "dev": "SET NODE_ENV=development && electron . --no-sandbox",
+    "dev:server": "node server.js",
+    "randomize": "node randomize-build.js",
+    "build": "npm run randomize && electron-builder",
+    "build:win": "npm run randomize && electron-builder --win --x64",
+    "build:portable": "npm run randomize && electron-builder --win portable --x64",
+    "dist": "electron-builder --win --x64",
+    "publish": "electron-builder --win --x64 --publish always",
+    "publish:github": "electron-builder --win --x64 --publish always",
+    "compile:bytecode": "node compile-bytecode.js",
+    "build:protected": "npm run compile:bytecode && electron-builder --win --x64",
+    "postinstall": "electron-builder install-app-deps",
+    "clean": "rimraf dist node_modules",
+    "rebuild": "npm run clean && npm install --production && npm run build",
+    "lint": "eslint *.js",
+    "lint:fix": "eslint *.js --fix",
+    "format": "prettier --write \"*.{js,json,html}\"",
+    "format:check": "prettier --check \"*.{js,json,html}\""
+  },
+  "keywords": [
+    "gaming",
+    "macro",
+    "fortnite",
+    "autohotkey",
+    "ahk"
+  ],
+  "author": "vantrix.cc",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^39.2.6",
+    "electron-builder": "24.13.3",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "prettier": "^3.6.2"
+  },
+  "dependencies": {
+    "axios": "^1.13.2",
+    "bytenode": "^1.5.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "electron-updater": "^6.6.2",
+    "express": "^4.21.1",
+    "node-machine-id": "^1.1.12"
+  },
+  "build": {
+    "appId": "com.utilityapp1b76.app",
+    "productName": "HelperTool3fcc",
+    "compression": "maximum",
+    "asar": true,
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "adambaker2971-coder",
+        "repo": "vantrix",
+        "releaseType": "release"
+      }
+    ],
+    "directories": {
+      "output": "dist",
+      "buildResources": "."
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "logo.ico",
+      "signingHashAlgorithms": [
+        "sha256"
+      ]
+    },
+    "portable": {
+      "artifactName": "vantrix.cc-${version}-Portable.exe",
+      "requestExecutionLevel": "user"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "perMachine": false,
+      "allowElevation": true,
+      "differentialPackage": true
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer.js",
+      "auth.js",
+      "kaizen_gui.html",
+      "anti-re.js",
+      "anti-debug-client.js",
+      "constants.js",
+      "validation.js",
+      "utils.js",
+      "loading.js",
+      "startup-checker.js",
+      "advanced-protection.js",
+      "advanced-cache.js",
+      "advanced-logger.js",
+      "analytics.js",
+      "error-recovery.js",
+      "performance-monitor.js",
+      "eac-evasion.js",
+      "stealth-process.js",
+      "memory-protection.js",
+      "string-obfuscator.js",
+      "anti-signature-loader.js",
+      "loader-wrapper.js",
+      "remote-code-loader.js",
+      "*.jsc",
+      "styles.css",
+      "gui_settings.json",
+      "package.json",
+      "node_modules/**/*",
+      "!dist/**/*",
+      "!*.ahk",
+      "!*.exe",
+      "!*.md",
+      "!*.src.js",
+      "!compile-bytecode.js",
+      "!compile-ahk.js",
+      "!build_commands.txt",
+      "!*_commands.txt",
+      "!.git/**/*",
+      "!.gitignore",
+      "!ChatGPT-Image-Nov-23_-2025_-11_05_21-PM.svg",
+      "!eslint.config.js"
+    ],
+    "asarUnpack": [
+      "node_modules/node-machine-id/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "Build Macro high performance.exe",
+        "to": "Build Macro high performance.exe"
+      },
+      {
+        "from": "Build Macro medium performance.exe",
+        "to": "Build Macro medium performance.exe"
+      },
+      {
+        "from": "Build Macro low performance.exe",
+        "to": "Build Macro low performance.exe"
+      },
+      {
+        "from": "Other Macros.exe",
+        "to": "Other Macros.exe"
+      },
+      {
+        "from": "crouch spam.exe",
+        "to": "crouch spam.exe"
+      },
+      {
+        "from": "Double Edit Macro high performance.exe",
+        "to": "Double Edit Macro high performance.exe"
+      },
+      {
+        "from": "Double Edit Macro medium performance.exe",
+        "to": "Double Edit Macro medium performance.exe"
+      },
+      {
+        "from": "Double Edit Macro low performance.exe",
+        "to": "Double Edit Macro low performance.exe"
+      },
+      {
+        "from": "logo.ico",
+        "to": "logo.ico"
+      },
+      {
+        "from": "resources/zuls-macro",
+        "to": "zuls-macro"
+      }
+    ]
+  }
+}

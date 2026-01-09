@@ -1,0 +1,352 @@
+/* ============================================================================
+   REXIUM LABS MACRO - OPTIMIZED STYLES
+   Performance-optimized CSS with reduced animations and visual effects
+   ============================================================================ */
+
+:root {
+    --custom-color: #dc2626;
+    --custom-color-rgb: 220, 38, 38;
+    --custom-color-dark: rgb(170, 0, 0);
+    --custom-color-light: rgb(255, 88, 88);
+}
+
+/* ============================================================================
+   BASE STYLES
+   ============================================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: transparent;
+    color: #e0e0e0;
+    overflow-x: hidden;
+    -webkit-app-region: no-drag;
+    line-height: 1.6;
+}
+
+/* Smooth theme color transitions */
+.container {
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.header,
+.section-title,
+.instructions-box,
+.about-hero {
+    transition: background 0.5s ease, border-color 0.5s ease;
+}
+
+.tab,
+.btn-start,
+.keybind-button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.5s ease, border-color 0.5s ease, color 0.5s ease;
+}
+
+/* ============================================================================
+   OPTIMIZED LOADING SCREEN
+   Reduced animations for better performance, skippable on click
+   ============================================================================ */
+
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    cursor: pointer;
+}
+
+#loading-screen::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center,
+        rgba(var(--custom-color-rgb), 0.06) 0%,
+        rgba(var(--custom-color-rgb), 0.03) 30%,
+        transparent 60%);
+    animation: rotateGlow 20s linear infinite;
+    opacity: 0.5;
+    will-change: transform;
+}
+
+@keyframes rotateGlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Glow effects removed */
+
+#loading-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+    position: relative;
+    padding: 30px;
+}
+
+.loading-logo-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle,
+        rgba(var(--custom-color-rgb), 0.1) 0%,
+        transparent 70%);
+    border-radius: 50%;
+    animation: pulseGlow 4s ease-in-out infinite;
+    filter: blur(30px);
+    will-change: transform, opacity;
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.4;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.7;
+    }
+}
+
+/* Simplified text animations */
+.loading-top-text {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 6px;
+    color: #e0e0e0;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Premium Cursive Logo - simplified animation */
+.cursive-rk {
+    font-family: 'Dancing Script', cursive;
+    font-size: 110px;
+    font-weight: 700;
+    background: linear-gradient(135deg,
+        var(--custom-color) 0%,
+        var(--custom-color-light) 50%,
+        var(--custom-color) 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -10px;
+    margin-bottom: 25px;
+    opacity: 0;
+    animation: fadeInScale 0.8s ease-out 0.2s forwards;
+    font-style: italic;
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.loading-logo {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 6px;
+    color: #e0e0e0;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    animation: fadeIn 0.6s ease-out 0.3s forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Optimized progress bar */
+.loading-bar-container {
+    width: 450px;
+    margin-top: 50px;
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out 0.5s forwards;
+}
+
+.loading-bar {
+    width: 100%;
+    height: 10px;
+    background: #000000;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.6) inset;
+    position: relative;
+}
+
+.loading-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg,
+        var(--custom-color) 0%,
+        var(--custom-color-light) 50%,
+        var(--custom-color) 100%);
+    background-size: 200% 100%;
+    border-radius: 20px;
+    animation: loadingProgress 1.5s ease-out forwards;
+    will-change: width;
+}
+
+@keyframes loadingProgress {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+.loading-version {
+    font-size: 10px;
+    font-weight: 700;
+    color: #808080;
+    letter-spacing: 3px;
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out 0.7s forwards;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    background: #000000;
+    border-radius: 20px;
+    border: 1px solid #1a1a1a;
+}
+
+.loading-status {
+    font-size: 12px;
+    font-weight: 600;
+    color: #b0b0b0;
+    margin-top: 12px;
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out 0.8s forwards;
+    letter-spacing: 1px;
+}
+
+.loading-percentage {
+    font-size: 13px;
+    font-weight: 800;
+    color: #e0e0e0;
+    text-align: center;
+    margin-top: 16px;
+    letter-spacing: 3px;
+}
+
+/* Skip loading hint */
+.loading-skip-hint {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: #666666;
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out 1s forwards, pulse 2s ease-in-out 1.5s infinite;
+    letter-spacing: 1px;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.7; }
+}
+
+/* ============================================================================
+   PERFORMANCE OPTIMIZATIONS
+   Consolidated box-shadows and reduced visual effects
+   ============================================================================ */
+
+/* Buttons */
+.btn-start,
+.keybind-button,
+.btn-save,
+.btn-clear {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-start:hover,
+.keybind-button:hover,
+.btn-save:hover,
+.btn-clear:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transform: translateY(-1px);
+}
+
+/* Cards */
+.section-title,
+.instructions-box,
+.troubleshoot-card {
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+}
+
+.troubleshoot-card:hover {
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.4);
+}
+
+/* Reduced backdrop-filter usage */
+.titlebar,
+.theme-popup,
+.custom-alert-overlay {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* ============================================================================
+   CSS CONTAINMENT FOR BETTER RENDERING PERFORMANCE
+   ============================================================================ */
+
+.tab,
+.section-title,
+.keybind-button,
+.troubleshoot-card {
+    contain: layout style paint;
+}
+
+/* ============================================================================
+   WILL-CHANGE HINTS FOR SMOOTHER ANIMATIONS
+   ============================================================================ */
+
+.loading-bar-fill,
+.loading-logo-container::before,
+#loading-screen::before {
+    will-change: transform, opacity;
+}
+
+/* Remove will-change after animation completes */
+.animation-complete {
+    will-change: auto;
+}

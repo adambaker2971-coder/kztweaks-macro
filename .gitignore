@@ -1,0 +1,57 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build outputs
+dist/
+win-unpacked/
+*.exe
+*.obj
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Binary files
+*.dll
+*.pak
+*.bin
+*.dat
+*.ico
+*.svg
+
+# Source files (if not needed)
+*.ahk
+*.cpp
+*.rc
+*.py
+*.ps1
+*.bat
+
+# Temporary files
+*.tmp
+*.temp
+*.cache
+
+# Railway/Deployment
+.railway/
+
+# Other
+vantrix.cc/
+resources/
+random-resources/
+app.asar
